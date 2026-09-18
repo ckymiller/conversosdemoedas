@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeClub Convert Money</title>
+</head>
+
+<body>
+    <div class="container">
+
+    <header><h1>CodeClub Convert Money</h1></header>
+
+    <main>
+        <label> Converter <b>de</b>
+            <select> 
+                <option>R$ Real Brasileiro</option>
+            </select>
+        </label>
+
+        <label> Converter <b>para</b>
+            <select id="botao-muda-moeda">
+                <option>US$ Dolar Americano</option>
+                <option>€ Euro</option>
+            </select>
+        </label>
+
+        <label>valor
+            <input id="valor-real" placeholder="R$10.000,00">
+        </label>
+
+        <button id="botao-converter" type="button">Converter</button>
+
+        <section>
+            <div class="currency-container">
+                <img src="assets/real.jpeg" alt="">
+                <p id="valorDoReal" class="currency-name">Real</p>
+                <p id="valor-moedareal-digitada" class="currency-value">R$10.000,00</p>
+            </div>
+
+            <img class="arrow-img" src="assets/seta.jpeg" alt="">
+
+            <div class="currency-container">
+                <img id="muda-imagem" src="assets/eua.jpeg" alt="">
+                <p id="nome-moeda-convertida" class="currency-name" >Dolar Americano</p>
+                <p id="valor-moedaconvertida" class="currency-value">US$2.000,00</p>
+            </div>
+
+        </section>
+    </main>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
