@@ -1,30 +1,43 @@
-const button = document.getElementById("botao-converter");
-const valorMoedaEua = document.getElementById("valor-moedaconvertida");
-const select = document.getElementById("botao-muda-moeda");
-const mudaImagem = document.getElementById("muda-imagem");
-const nomeMoeda = document.getElementById("nome-moeda-convertida");
-const valorDoReal = document.getElementById("valor-moedareal-digitada");
+const botaoConveter = document.getElementById('botao-converter')
+const select = document.getElementById('botao-muda-moeda')
+const dolar = 5.50
+const euro = 6.20
+const valorDigitadoReal = document.getElementById('valor-moedareal-digitada')
+const valorDigitadoConvertido = document.getElementById('valor-moedaconvertida')
+const nomeDaMoedaConvertida = document.getElementById('nome-moeda-convertida')
+const mudaImagem = document.getElementById('muda-imagem')
 
-const dollar = 6.2;
-const euro = 6.0;
 
-const converter = () => {
-  const valorReal = document.getElementById("valor-real").value;
+const conversorDeMoedas = () => {
+    const valorDigitado = document.getElementById('valor-real').value
+    
+    valorDigitadoReal.innerHTML = new Intl.NumberFormat("pt-BR", {style: "currency",currency: "BRL",}).format(valorDigitado);
 
-  valorDoReal.innerHTML = new Intl.NumberFormat("pt-BR", {style: "currency",currency: "BRL",}).format(valorReal);
-  
+    if(select.value === 'US$ Dolar Americano'){
+            valorDigitadoConvertido.innerHTML = Intl.NumberFormat("en-US", {style: "currency",currency: "USD",}).format(valorDigitado / dolar)
+        
+    }
 
-  if (select.value === "US$ Dolar Americano") {
-    nomeMoeda.innerHTML = "US$ Dolar Americano";
-    valorMoedaEua.innerHTML = new Intl.NumberFormat("en-US", {style: "currency",currency: "USD",}).format(valorReal / dollar)
-    mudaImagem.src = "./assets/eua.jpeg";
-  }
+    if(select.value === '€ Euro'){
+            valorDigitadoConvertido.innerHTML = new Intl.NumberFormat("pt-BR", {style: "currency",currency: "EUR",}).format(valorDigitado / euro)
+        
+    }
+    
+}
 
-  if (select.value === "€ Euro") {
-    nomeMoeda.innerHTML = "€ Euro";
-    valorMoedaEua.innerHTML = new Intl.NumberFormat("pt-BR", {style: "currency",currency: "EUR",}).format(valorReal / euro)
-    mudaImagem.src = "assets/euro.jpeg";
-  }
-};
+changeCurrency = () => {
+    if(select.value === 'US$ Dolar Americano'){
+        nomeDaMoedaConvertida.innerHTML = 'US$ Dolar Americano'
+        mudaImagem.src='assets/eua.jpeg'
+                
+    }
 
-button.addEventListener("click", converter);
+    if(select.value === '€ Euro'){
+        nomeDaMoedaConvertida.innerHTML = '€ Euro'
+        mudaImagem.src='assets/euro.jpeg'
+                
+    }
+}
+
+botaoConveter.addEventListener('click', conversorDeMoedas)
+select.addEventListener('change', changeCurrency)
